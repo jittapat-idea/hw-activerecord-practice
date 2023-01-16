@@ -42,6 +42,10 @@ class Customer < ActiveRecord::Base
   def self.born_before_1980
     where("birthdate < ?" , "1980-01-01").all
   end
+  
+  def self.with_valid_email_and_born_before_1980
+    where("email LIKE ? AND birthdate < ?" , "%@%","1980-01-01").all
+  end
 
   
 end
