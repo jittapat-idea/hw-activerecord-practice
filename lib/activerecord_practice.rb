@@ -66,6 +66,10 @@ class Customer < ActiveRecord::Base
   def self.delete_meggie_herman
     find_by(:first => 'Meggie', :last => 'Herman').destroy
   end
+  
+  def self.delete_everyone_born_before_1978
+    where("birthdate < ?" ,Time.parse("1 January 1978")).destroy_all
+  end
 
   
 end
