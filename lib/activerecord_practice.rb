@@ -34,6 +34,10 @@ class Customer < ActiveRecord::Base
   def self.with_invalid_email
     where("email NOT LIKE ?","%@%").all
   end
+  
+  def self.with_blank_email
+    where(email: nil)
+  end
 
   
 end
