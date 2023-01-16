@@ -58,6 +58,10 @@ class Customer < ActiveRecord::Base
   def self.update_gussie_murray_birthdate
     where(first: 'Gussie').update(birthdate: "2004-02-08")
   end
+  
+  def self.change_all_invalid_emails_to_blank
+    where("email != '' AND email NOT NULL AND email NOT LIKE ?","%@%").update(email: nil)
+  end
 
   
 end
