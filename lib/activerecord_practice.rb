@@ -68,7 +68,7 @@ class Customer < ActiveRecord::Base
   end
   
   def self.delete_everyone_born_before_1978
-    where("birthdate < ?" ,Time.parse("1 January 1978")).destroy_all
+    where("birthdate < ?" ,"1978-01-01").destroy_all
   end
 
   
