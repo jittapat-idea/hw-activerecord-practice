@@ -19,20 +19,20 @@ class Customer < ActiveRecord::Base
   def self.any_candice
     # YOUR CODE HERE to return all customer(s) whose first name is Candice
     # probably something like:  Customer.where(....)
-    where(first: 'Candice').all
+    where(first: 'Candice')
   end
   
   def self.with_valid_email
     # YOUR CODE HERE to return only customers with valid email addresses (containing '@')
-    where("email LIKE ?", "%@%").all
+    where("email LIKE ?", "%@%")
   end
   
   def self.with_dot_org_email
-    where("email LIKE ?", "%\.org%").all
+    where("email LIKE ?", "%\.org%")
   end
   
   def self.with_invalid_email
-    where("email NOT LIKE ?","%@%").all
+    where("email NOT LIKE ?","%@%")
   end
   
   def self.with_blank_email
@@ -40,11 +40,11 @@ class Customer < ActiveRecord::Base
   end
   
   def self.born_before_1980
-    where("birthdate < ?" , "1980-01-01").all
+    where("birthdate < ?" , "1980-01-01")
   end
   
   def self.with_valid_email_and_born_before_1980
-    where("email LIKE ? AND birthdate < ?" , "%@%","1980-01-01").all
+    where("email LIKE ? AND birthdate < ?" , "%@%","1980-01-01")
   end
   
   def self.last_names_starting_with_b
@@ -53,6 +53,10 @@ class Customer < ActiveRecord::Base
   
   def self.twenty_youngest
     order(birthdate: :desc).limit(20)
+  end
+  
+  def self.update_gussie_murray_birthdate
+    where(first: 'Gussie').update(birthdate: "2004-02-08")
   end
 
   
