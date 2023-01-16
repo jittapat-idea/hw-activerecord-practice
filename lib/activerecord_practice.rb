@@ -46,6 +46,10 @@ class Customer < ActiveRecord::Base
   def self.with_valid_email_and_born_before_1980
     where("email LIKE ? AND birthdate < ?" , "%@%","1980-01-01").all
   end
+  
+  def self.last_names_starting_with_b
+    where("last LIKE ?","B%").order(birthdate: :asc)
+  end
 
   
 end
