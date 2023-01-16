@@ -62,6 +62,10 @@ class Customer < ActiveRecord::Base
   def self.change_all_invalid_emails_to_blank
     where("email != '' AND email NOT NULL AND email NOT LIKE ?","%@%").update(email: nil)
   end
+  
+  def self.delete_meggie_herman
+    find_by(:first => 'Meggie', :last => 'Herman').destroy
+  end
 
   
 end
